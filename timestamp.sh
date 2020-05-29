@@ -1,8 +1,10 @@
 #!/bin/bash
 
-set -x
-echo "Old time was"
-cat $1
+set -e
 
-echo "`date` and old time was $1 `cat $1`" > $1
+workspacedir=$(head -n1 ../../README | cut -d ' ' -f 2)/$1
+
+echo "`date` and old time was `cat $workspacedir/$2`" > $workspacedir/$2
+
+ln -s $workspacedir/$2 $2
 

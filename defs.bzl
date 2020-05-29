@@ -1,7 +1,6 @@
 
 def _read_bazel_out_impl(ctx):
-    print(ctx.path(ctx.attr.rebuild))
-    ctx.execute([ctx.path(ctx.attr.timestamper), "local_file"])
+    ctx.execute([ctx.path(ctx.attr.timestamper), ctx.attr.typescript_out, "local_file"])
 
     ctx.file(
         "BUILD",
@@ -14,6 +13,7 @@ read_bazel_out = repository_rule(
     attrs = {
         "rebuild": attr.label(allow_single_file=True),
         "timestamper": attr.label(allow_single_file = True),
+        "typescript_out": attr.string(doc = "path relative to workspace to put the typescript output"),
     },
     implementation = _read_bazel_out_impl,
     local = True,
