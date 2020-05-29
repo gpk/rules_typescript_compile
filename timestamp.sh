@@ -2,9 +2,10 @@
 
 set -e
 
-workspacedir=$(head -n1 ../../README | cut -d ' ' -f 2)/$1
+mkdir -p ~/tmpdir/${1}
+workspacedir=~/tmpdir/$1
 
-echo "`date` and old time was `cat $workspacedir/$2`" > $workspacedir/$2
+echo "`date` and old time was ${1} `cat $workspacedir/$2`" > $workspacedir/$2
 
-ln -s $workspacedir/$2 $2
+ln $workspacedir/$2 $2
 
