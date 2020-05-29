@@ -1,6 +1,8 @@
 
 def _read_bazel_out_impl(ctx):
-    ctx.path(ctx.attr.rebuild)
+    path = ctx.path(ctx.attr.rebuild)
+    print(path.exists)
+
 
     print(ctx.attr.typescript_out)
     ctx.execute([ctx.path(ctx.attr.timestamper), ctx.attr.typescript_out, "local_file"])

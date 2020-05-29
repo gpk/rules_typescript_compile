@@ -2,10 +2,10 @@
 
 set -e
 
-mkdir -p ~/tmpdir/${1}
-workspacedir=~/tmpdir/$1
+mkdir -p $1
+workspacedir=$1
 
-echo "`date` and old time was ${1} `cat $workspacedir/$2`" > $workspacedir/$2
+echo "`date` and old time was `cat $workspacedir/$2`" > $workspacedir/$2
 
 ln $workspacedir/$2 $2
 
