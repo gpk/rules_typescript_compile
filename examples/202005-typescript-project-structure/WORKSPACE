@@ -1,0 +1,7 @@
+load("@rules_tsc_compile//defs.bzl", "tsc_compiler")
+
+tsc_compiler(
+    name = "tsc",
+    project = "//:tsconfig",
+    # other options
+)
